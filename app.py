@@ -31,4 +31,4 @@ if uploaded_file is not None:
         data=output_buffer,
         file_name=output_file,
         mime="image/jpeg"
-    )io.BytesIO(output_image_bytes)
+        )
