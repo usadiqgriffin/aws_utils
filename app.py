@@ -10,6 +10,7 @@ uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png
 if uploaded_file is not None:
     input_image = Image.open(uploaded_file)
     output_file = uploaded_file.name.split(".")[-2] + "_rembg.jpg"
+    image_width = max(400, input_image.size[0])
     #st.image(input_image, caption='Uploaded Image', use_column_width=True)
 
     with st.spinner('Removing background...'):
@@ -21,7 +22,7 @@ if uploaded_file is not None:
         output_buffer = io.BytesIO(output_image_bytes)
         output_image = Image.open(io.BytesIO(output_image_bytes))
 
-    st.image(output_image, caption='Image with Background Removed', use_column_width=True)
+    st.image(output_image, caption='Image with Background Removed', use_column_width=image_width)
     st.success('Background removal completed!')
 
 
